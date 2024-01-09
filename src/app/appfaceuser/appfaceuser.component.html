@@ -1,0 +1,122 @@
+<div class="container-fluid " [ngClass]="{'spinner-overlay' : loader}">
+     
+
+    <form [formGroup]="faceAppForm" #formDir="ngForm">
+      <div [hidden]="formDir.submitted">
+         
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              formControlName="name"
+              required
+            />
+  
+            <div
+              *ngIf="name.invalid && (name.dirty || name.touched)"
+              class="alert alert-danger"
+            >
+              <div *ngIf="name.errors?.['required']">Name is required.</div>
+              <div *ngIf="name.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+              <div *ngIf="name.errors?.['forbiddenName']">
+                Name cannot be Bob.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label for="mobileNo">mobileNo</label>
+              <input
+                type="text"
+                id="mobileNo"
+                class="form-control"
+                formControlName="mobileNo"
+                required
+              />
+    
+              <div
+                *ngIf="mobileNo.invalid && (mobileNo.dirty || mobileNo.touched)"
+                class="alert alert-danger"
+              >
+                <div *ngIf="mobileNo.errors?.['required']">Mobile Number is required.</div>  
+              </div>
+            </div>
+  
+          <div class="form-group">
+            <label for="eMailAddress">E mail</label>
+            <input
+              type="text"
+              id="eMailAddress"
+              class="form-control"
+              formControlName="eMailAddress"
+              required
+            />
+
+            <div
+            *ngIf="eMailAddress.invalid && (eMailAddress.dirty || eMailAddress.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="eMailAddress.errors?.['required']">eMailAddress is required.</div>  
+          </div>     
+        
+        </div>
+
+        <div class="form-group">
+          <div class="col">
+              <div class="custom-file">
+                <input type="file" accept="image/*" class="custom-file-input" id="customFile" (change)="handleFileInput($any($event.target).files)" [disabled]="working">
+                <label class="custom-file-label" for="customFile">{{ uploadFileLabel }}</label>
+              </div>
+            </div>
+            <!-- <div class="col-auto pl-sm-0">
+              <button type="button" class="btn btn-sm btn-secondary" ngbTooltip="Upload" (click)="upload()" [disabled]="working">Upload</button>
+            </div> -->
+
+            <div class="row mt-3" *ngIf="working">
+              <div class="col">
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploadProgress + '%' }" [attr.aria-valuenow]="uploadProgress" aria-valuemin="0" aria-valuemax="100">{{ uploadProgress }}%</div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3" *ngIf="uploadUrl?.length">
+              <div class="col">
+                <img [src]="uploadUrl" alt="preview" class="rounded img-fluid">
+              </div>
+            </div>
+        </div>
+
+  
+        <p>Complete the form to enable the Submit button.</p>
+        <button
+          type="submit"
+          class="btn btn-default"
+          (click)="onSubmit()"
+          [disabled]="faceAppForm.invalid"
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          class="btn btn-default"
+          (click)="formDir.resetForm({})"
+        >
+          Reset
+        </button>
+      </div>
+    </form>
+  
+    <div class="submitted-message" *ngIf="formDir.submitted">
+      <p>You've submitted your hero, {{ faceAppForm.value.name }}!</p>
+      <button type="button" (click)="formDir.resetForm({})">Add new hero</button>
+    </div>
+
+    <div class="submitted-message" *ngIf="formDir.submitted">
+      <p>{{formErrorMessage}}</p> 
+    </div>
+
+</div>
