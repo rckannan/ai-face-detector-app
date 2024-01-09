@@ -57,5 +57,5 @@ jobs:
         with:
           app-name: 'rithv-app-face-detector'
           slot-name: 'Production'
-          package: './dist/ang-app-face-detector-ai'
+          package: './dist/ang-app-face-detector-ai/browser'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_97566F638D3D462681CB378413A3CDFF }}
