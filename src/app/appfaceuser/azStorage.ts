@@ -5,11 +5,16 @@ import {
   import { BlobItem } from '@azure/storage-blob';
 //   import { environment } from "src/environments/environment";
   const account = "rithstgaccai001" //environment.ACCOUNT_NAME;
-  const accountKey = "sp=racwdl&st=2024-01-05T02:34:45Z&se=2024-01-30T10:34:45Z&sv=2022-11-02&sr=c&sig=2o6OJE9y528z3pmhMpeUcpHk98%2FF9I8FFpoobjeQPVg%3D" // environment.SAS;
+  // const accountKey = "sp=racwdl&st=2024-01-05T02:34:45Z&se=2024-01-30T10:34:45Z&sv=2022-11-02&sr=c&sig=2o6OJE9y528z3pmhMpeUcpHk98%2FF9I8FFpoobjeQPVg%3D" // environment.SAS;
+  // // BlobClientServiceString
+  // // const sharedKeyCredential = new StorageSharedKeyCredential(account, accountKey);
+  
+  // const blobServiceClient = new BlobServiceClient(`https://${account}.blob.core.windows.net/face-detector-container?${accountKey}`);
+  const accountKey = "?sv=2022-11-02&ss=b&srt=sco&sp=rwdlaciyx&se=2024-01-31T01:36:25Z&st=2024-01-09T17:36:25Z&spr=https&sig=9kSdE199BLLfWgnJgm4QtQK9hoVnZdSosfUaKnk3kfE%3D" // environment.SAS;
   // BlobClientServiceString
   // const sharedKeyCredential = new StorageSharedKeyCredential(account, accountKey);
   
-  const blobServiceClient = new BlobServiceClient(`https://${account}.blob.core.windows.net/face-detector-container?${accountKey}`);
+  const blobServiceClient = new BlobServiceClient(`https://${account}.blob.core.windows.net/${accountKey}`);
   
   // const blobServiceClient = new BlobServiceClient(
   //   // When using AnonymousCredential, following url should include a valid SAS or support public access
