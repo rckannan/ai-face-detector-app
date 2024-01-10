@@ -16,7 +16,7 @@
     --hot-red: oklch(61.42% 0.238 15.34);
     --orange-red: oklch(63.32% 0.24 31.68);
 
-    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-900: oklch(18.37% 0.006 300.98);
     --gray-700: oklch(36.98% 0.014 302.71);
     --gray-400: oklch(70.9% 0.015 304.04);
 
@@ -94,7 +94,7 @@
 
   .divider {
     width: 1px;
-    background: var(--red-to-pink-to-purple-vertical-gradient);
+    background: var(--red-to-pink-to-purple-horizontal-gradient);
     margin-inline: 0.5rem;
   }
 
@@ -162,6 +162,18 @@
     fill: var(--gray-900);
   }
 
+  h5 {
+    font-size: 1.0rem;
+    color: var(--gray-700);
+    font-weight: 200;
+    line-height: 100%; 
+    margin: 0 auto;
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    text-align: center;
+    }
+
   @media screen and (max-width: 650px) {
     .content {
       flex-direction: column;
@@ -174,6 +186,8 @@
       background: var(--red-to-pink-to-purple-horizontal-gradient);
       margin-block: 1.5rem;
     }
+
+    
   }
 </style>
 
@@ -228,10 +242,15 @@
        
     
 
-        <h3>Welcome to AI based Photo Detector </h3>
-        <p>You can enter the below details and upload a selfie image of you, then you will receive your most memorable photos form us. 🎉</p>
+        <h3>Welcome to ai based face detector </h3>
+        <p>You can enter the below details and upload a selfie image of you, then you will receive your most memorable images from us. 🎉</p>
         <h3></h3>
         <app-appfaceuser></app-appfaceuser>
+      </div>
+
+      <div class="divider" role="separator" aria-label="Divider"></div>
+      <div class="left-side"> 
+        <h5>Face detection - detecting the presence of any face, regardless of identity</h5>
       </div>
     </div> 
 

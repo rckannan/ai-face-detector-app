@@ -68,7 +68,8 @@
         <div class="form-group">
           <div class="col">
               <div class="custom-file">
-                <input type="file" accept="image/*" class="custom-file-input" id="customFile" (change)="handleFileInput($any($event.target).files)" [disabled]="working">
+                <input formControlName="imageBlob" type="file" accept="image/*" class="custom-file-input" id="customFile" 
+                (change)="handleFileInput($any($event.target).files)">
                 <label class="custom-file-label" for="customFile">{{ uploadFileLabel }}</label>
               </div>
             </div>
@@ -111,8 +112,8 @@
     </form>
   
     <div class="submitted-message" *ngIf="formDir.submitted">
-      <p>You've submitted your hero, {{ faceAppForm.value.name }}!</p>
-      <button type="button" (click)="formDir.resetForm({})">Add new hero</button>
+      <p>You've submitted your image, {{ faceAppForm.value.name }}! </p>
+      <button type="button" (click)="formDir.resetForm({})">try again !!!</button>
     </div>
 
     <div class="submitted-message" *ngIf="formDir.submitted">

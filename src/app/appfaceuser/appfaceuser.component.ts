@@ -18,7 +18,7 @@ export class AppfaceuserComponent {
   containerName : string = "face-detector-container";
   formErrorMessage: string = '';
 
-  appPeople = { name: '', mobileNo: '', eMailAddress: '', blobURL : '', imageBlob : File };
+  appPeople = { name: '', mobileNo: '', eMailAddress: '', imageBlob : null };
 
   files: any;
   constructor(private httpClient: HttpClient) {  
@@ -70,6 +70,8 @@ export class AppfaceuserComponent {
     if (files.length > 0) {
       this.uploadFile = files.item(0);
       this.uploadFileLabel = this.uploadFile?.name;
+
+      this.appPeople.imageBlob = this.uploadFile;
     }
   } 
 
@@ -106,37 +108,37 @@ export class AppfaceuserComponent {
     this.uploadProgress = 0;
     this.working = true;
 
-    // this.upload_file_Blob(fileJson);
-    this.upload_file_Blob(this.uploadFile);
+    this.upload_file_Blob(fileJson, this.mobileNo.value+".json");
+    this.upload_file_Blob(this.uploadFile, this.mobileNo.value+".json");
   } 
 
-  upload_file_Blob(file: any) {   
+  upload_file_Blob(file: any, file_name : string) {   
     let content: CONTENT = {
       containerName: this.containerName,
       file: file,
-      filename: file.name // `${this.containerName}-${Date.now()}.${file.name.split('.')[1]}`
+      filename: file_name
     };
     uploadFile(content).then((res: string) => {
       console.log(res);
     })  
   }
 
-  upload_Blob(file: any) {
-    console.log(file.files.length);
-    if (file.files.length > 0) {
-      [...file.files].forEach((file: any) => {
-        let content: CONTENT = {
-          containerName: this.containerName,
-          file: file,
-          filename: file.name // `${this.containerName}-${Date.now()}.${file.name.split('.')[1]}`
-        };
-        uploadFile(content).then((res: string) => {
-          console.log(res);
-        })
-        console.log(file);
-      })
-    }
-  }
+  // upload_Blob(file: any) {
+  //   console.log(file.files.length);
+  //   if (file.files.length > 0) {
+  //     [...file.files].forEach((file: any) => {
+  //       let content: CONTENT = {
+  //         containerName: this.containerName,
+  //         file: file,
+  //         filename: file.name // `${this.containerName}-${Date.now()}.${file.name.split('.')[1]}`
+  //       };
+  //       uploadFile(content).then((res: string) => {
+  //         console.log(res);
+  //       })
+  //       console.log(file);
+  //     })
+  //   }
+  // }
 
   onFileChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
