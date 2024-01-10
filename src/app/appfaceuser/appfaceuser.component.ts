@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CONTENT, uploadFile } from './azStorage';
-import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-appfaceuser',
@@ -101,9 +100,6 @@ export class AppfaceuserComponent {
     }
     const fileJson = new File([JSON.stringify(docJson)], this.mobileNo.value+".json", {type: "application/json'"})
 
-    // const formData = new FormData();
-    // formData.append(this.uploadFile.name, this.uploadFile);
-
     this.uploadUrl = '';
     this.uploadProgress = 0;
     this.working = true;
@@ -121,24 +117,7 @@ export class AppfaceuserComponent {
     uploadFile(content).then((res: string) => {
       console.log(res);
     })  
-  }
-
-  // upload_Blob(file: any) {
-  //   console.log(file.files.length);
-  //   if (file.files.length > 0) {
-  //     [...file.files].forEach((file: any) => {
-  //       let content: CONTENT = {
-  //         containerName: this.containerName,
-  //         file: file,
-  //         filename: file.name // `${this.containerName}-${Date.now()}.${file.name.split('.')[1]}`
-  //       };
-  //       uploadFile(content).then((res: string) => {
-  //         console.log(res);
-  //       })
-  //       console.log(file);
-  //     })
-  //   }
-  // }
+  } 
 
   onFileChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;

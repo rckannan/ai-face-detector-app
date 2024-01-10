@@ -1,34 +1,20 @@
 
 import {
-    BlobServiceClient, //StorageSharedKeyCredential,
+    BlobServiceClient, 
   } from "@azure/storage-blob";
-  import { BlobItem } from '@azure/storage-blob';
-//   import { environment } from "src/environments/environment";
-  const account = "rithstgaccai001" //environment.ACCOUNT_NAME;
-  // const accountKey = "sp=racwdl&st=2024-01-05T02:34:45Z&se=2024-01-30T10:34:45Z&sv=2022-11-02&sr=c&sig=2o6OJE9y528z3pmhMpeUcpHk98%2FF9I8FFpoobjeQPVg%3D" // environment.SAS;
-  // // BlobClientServiceString
-  // // const sharedKeyCredential = new StorageSharedKeyCredential(account, accountKey);
-  
-  // const blobServiceClient = new BlobServiceClient(`https://${account}.blob.core.windows.net/face-detector-container?${accountKey}`);
+  import { BlobItem } from '@azure/storage-blob'; 
+
+
+  const account = "rithstgaccai001"   
   const accountKey = "?sv=2022-11-02&ss=b&srt=sco&sp=rwdlaciyx&se=2024-01-31T01:36:25Z&st=2024-01-09T17:36:25Z&spr=https&sig=9kSdE199BLLfWgnJgm4QtQK9hoVnZdSosfUaKnk3kfE%3D" // environment.SAS;
-  // BlobClientServiceString
-  // const sharedKeyCredential = new StorageSharedKeyCredential(account, accountKey);
-  
-  const blobServiceClient = new BlobServiceClient(`https://${account}.blob.core.windows.net/${accountKey}`);
-  
-  // const blobServiceClient = new BlobServiceClient(
-  //   // When using AnonymousCredential, following url should include a valid SAS or support public access
-  //   `https://${account}.blob.core.windows.net`,
-  //   sharedKeyCredential
-  // );
+  const blobServiceClient = new BlobServiceClient(`https://${account}.blob.core.windows.net/${accountKey}`); 
 
   export interface BLOBItem extends BlobItem { };
   export interface CONTENT {
     containerName: string; // desired container name
     file: any;  // file to upload
     filename: string; // filename as desired with path
-  }
-  
+  }  
   
   export async function getContainers() {
     let containers = [];
@@ -55,7 +41,6 @@ import {
   
   
   export async function listBlob(containerName: string) {
-    // BlobContainerClient
     const containerClient = blobServiceClient.getContainerClient(containerName);
     let ListBlobs = [];
     let iter = containerClient.listBlobsFlat();
@@ -81,13 +66,6 @@ import {
   }
   
   export async function uploadFile(content: CONTENT) {
-    // const containerClient = blobServiceClient.getContainerClient(content.containerName);
-    // const blockBlobClient = containerClient.getBlockBlobClient(content.filename);
-    // const uploadBlobResponse = await blockBlobClient.uploadBrowserData(content.file, {
-    //   maxSingleShotSize: 4 * 1024 * 1024,
-    //   blobHTTPHeaders: { blobContentType: content.file.type } // set mimetype
-    // });
-
     const containerClient = blobServiceClient.getContainerClient(content.containerName);
     const blockBlobClient = containerClient.getBlockBlobClient(content.filename);
     const uploadBlobResponse = await blockBlobClient.upload(content.file, content.file.size);
