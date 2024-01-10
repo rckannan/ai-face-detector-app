@@ -109,7 +109,7 @@ export class AppfaceuserComponent {
     this.working = true;
 
     this.upload_file_Blob(fileJson, this.mobileNo.value+".json");
-    this.upload_file_Blob(this.uploadFile, this.mobileNo.value+".json");
+    this.upload_file_Blob(this.uploadFile, this.mobileNo.value+".jpeg");
   } 
 
   upload_file_Blob(file: any, file_name : string) {   
