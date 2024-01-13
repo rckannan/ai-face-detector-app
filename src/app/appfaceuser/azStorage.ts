@@ -2,12 +2,10 @@
 import {
     BlobServiceClient, 
   } from "@azure/storage-blob";
-  import { BlobItem } from '@azure/storage-blob'; 
+import { BlobItem } from '@azure/storage-blob';  
+import { azConnectDetails } from "./azDetails"; 
 
-
-  const account = "rithstgaccai001"   
-  const accountKey = "?sv=2022-11-02&ss=b&srt=sco&sp=rwdlaciyx&se=2024-01-31T01:36:25Z&st=2024-01-09T17:36:25Z&spr=https&sig=9kSdE199BLLfWgnJgm4QtQK9hoVnZdSosfUaKnk3kfE%3D" // environment.SAS;
-  const blobServiceClient = new BlobServiceClient(`https://${account}.blob.core.windows.net/${accountKey}`); 
+  const blobServiceClient = new BlobServiceClient(azConnectDetails.azURL()); 
 
   export interface BLOBItem extends BlobItem { };
   export interface CONTENT {

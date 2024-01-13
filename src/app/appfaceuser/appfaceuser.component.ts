@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CONTENT, uploadFile } from './azStorage';
+import { azConnectDetails } from './azDetails';
 
 @Component({
   selector: 'app-appfaceuser',
@@ -14,7 +15,7 @@ export class AppfaceuserComponent {
   formData: FormData;
   faceAppForm!: FormGroup;
 
-  containerName : string = "face-detector-container";
+  containerName : string = azConnectDetails.containerName();
   formErrorMessage: string = '';
 
   appPeople = { name: '', mobileNo: '', eMailAddress: '', imageBlob : null };
@@ -91,7 +92,7 @@ export class AppfaceuserComponent {
     }
 
     const docJson = {
-      eventId: 1,
+      eventId: azConnectDetails.eventID(),
       name : this.name.value,
       mobileNo : this.mobileNo.value,
       eMailAddress : this.eMailAddress.value,
