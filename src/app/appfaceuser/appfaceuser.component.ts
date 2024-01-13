@@ -129,11 +129,8 @@ export class AppfaceuserComponent {
 
   onSubmit(): void {
     if (this.faceAppForm.valid) {
-      this.upload()
-      // Add logic to handle other form fields
-    } else {
-      // Handle form validation errors
-      // this.formErrorMessage = this.faceAppForm.getError
+      this.upload() 
+    } else { 
     }
   }
 }
