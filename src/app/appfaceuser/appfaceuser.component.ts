@@ -99,7 +99,7 @@ export class AppfaceuserComponent {
       imageType : this.uploadFile.name.split('?')[0].split('.').pop(),
       fileName: this.uploadFile.name
     }
-    const fileJson = new File([JSON.stringify(docJson)], this.mobileNo.value+".json", {type: "application/json'"})
+    const fileJson = new File([JSON.stringify(docJson)],azConnectDetails.eventID()+'#'+ this.mobileNo.value+".json", {type: "application/json'"})
 
     this.uploadUrl = '';
     this.uploadProgress = 0;
