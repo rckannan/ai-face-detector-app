@@ -105,7 +105,7 @@ export class AppfaceuserComponent {
     this.uploadProgress = 0;
     this.working = true;
 
-    this.upload_file_Blob(fileJson, this.mobileNo.value+".json");
+    this.upload_file_Blob(fileJson, azConnectDetails.eventID()+'#'+this.mobileNo.value+".json");
     this.upload_file_Blob(this.uploadFile, this.mobileNo.value+".jpeg");
   } 
 
