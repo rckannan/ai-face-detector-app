@@ -55,8 +55,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          # app-name: 'rithv-app-face-detector'
-          app-name: 'photomemories'
+          app-name: 'rithv-app-face-detector'
           slot-name: 'Production'
           package: './dist/ang-app-face-detector-ai/browser'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_97566F638D3D462681CB378413A3CDFF }}
