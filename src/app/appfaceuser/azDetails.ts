@@ -1,7 +1,7 @@
 
-const _account : string = "rithstgaccai001"; 
-const _containerName : string = "face-detector-container"; 
-const _accountKey : string = "?sv=2022-11-02&ss=b&srt=sco&sp=rwdlaciyx&se=2024-01-31T01:36:25Z&st=2024-01-09T17:36:25Z&spr=https&sig=9kSdE199BLLfWgnJgm4QtQK9hoVnZdSosfUaKnk3kfE%3D";
+const _account : string = "sgfacedetector01"; 
+const _containerName : string = "facedetectorcontainer"; 
+const _accountKey : string = "?sv=2022-11-02&ss=b&srt=sco&sp=rwdlacyx&se=2024-03-31T14:16:09Z&st=2024-01-27T06:16:09Z&spr=https&sig=EHbsZ3%2FXTprgBcFB%2B7eQg7gbUI1PV%2FS1Hi8RuLEg82s%3D";
 const _eventID : string = "1";
 
 export abstract  class azConnectDetails { 
